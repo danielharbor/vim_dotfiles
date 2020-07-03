@@ -496,11 +496,15 @@ map <silent> <LocalLeader>nn :set nu!<CR>
 set splitbelow
 set splitright
 
+" automatically open quickfix after search
 augroup quickfix
     autocmd!
     autocmd QuickFixCmdPost [^l]* cwindow
     autocmd QuickFixCmdPost l*    lwindow
 augroup END
+
+" toggle tagbar
+nnoremap <leader>bb :TagbarToggle<cr>
 
 " change insert cursor style. https://stackoverflow.com/a/42118416
 let &t_SI = "\e[6 q"
@@ -508,9 +512,7 @@ let &t_EI = "\e[2 q"
 
 " toggle quickfix (with window history). https://learnvimscriptthehardway.stevelosh.com/chapters/38.html
 nnoremap <leader>ww :call QuickfixToggle()<cr>
-
 let g:quickfix_is_open = 0
-
 function! QuickfixToggle()
     if g:quickfix_is_open
         ccl
@@ -526,6 +528,43 @@ endfunction
 " Go to iTerm2 > Profiles > Text and select 'Use built-in Powerline glyphs'
 " Enable powerline font symbols for vim-airline. https://github.com/vim-airline/vim-airline#integrating-with-powerline-fonts
 let g:airline_powerline_fonts = 1
+
+" Universal Ctags
+" To use on mac osx, first 'brew install --HEAD universal-ctags/universal-ctags/universal-ctags'
+let g:rust_use_custom_ctags_defs = 1  " if using rust.vim
+let g:tagbar_type_rust = {
+  \ 'ctagsbin' : '/usr/local/bin/ctags',
+  \ 'ctagstype' : 'rust',
+  \ 'kinds' : [
+      \ 'n:modules',
+      \ 's:structures:1',
+      \ 'i:interfaces',
+      \ 'c:implementations',
+      \ 'f:functions:1',
+      \ 'g:enumerations:1',
+      \ 't:type aliases:1:0',
+      \ 'v:constants:1:0',
+      \ 'M:macros:1',
+      \ 'm:fields:1:0',
+      \ 'e:enum variants:1:0',
+      \ 'P:methods:1',
+  \ ],
+  \ 'sro': '::',
+  \ 'kind2scope' : {
+      \ 'n': 'module',
+      \ 's': 'struct',
+      \ 'i': 'interface',
+      \ 'c': 'implementation',
+      \ 'f': 'function',
+      \ 'g': 'enum',
+      \ 't': 'typedef',
+      \ 'v': 'variable',
+      \ 'M': 'macro',
+      \ 'm': 'field',
+      \ 'e': 'enumerator',
+      \ 'P': 'method',
+  \ },
+\ }
 
 "-------- Local Overrides
 ""If you have options you'd like to override locally for
