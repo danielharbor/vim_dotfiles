@@ -535,6 +535,9 @@ endfunction
 " Enable powerline font symbols for vim-airline. https://github.com/vim-airline/vim-airline#integrating-with-powerline-fonts
 let g:airline_powerline_fonts = 1
 
+" install coc.nvim extensions
+let g:coc_global_extensions = ['coc-rust-analyzer']
+
 " set coc color scheme to something more ideal than the default pink:
 " https://vi.stackexchange.com/questions/23328/change-color-of-coc-suggestion-box
 " CocFloating links to Pmenu. For details, run vim command `:hi`
