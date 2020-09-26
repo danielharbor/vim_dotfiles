@@ -506,6 +506,12 @@ augroup END
 " toggle tagbar
 nnoremap <leader>bb :TagbarToggle<cr>
 
+" open new tab
+nnoremap <silent> wincmd t :tabnew<cr>
+
+" open file under cursor in a new vertical split
+nnoremap <silent> gf :vertical wincmd f<CR>
+
 " change insert cursor style. https://stackoverflow.com/a/42118416
 let &t_SI = "\e[6 q"
 let &t_EI = "\e[2 q"
@@ -528,6 +534,11 @@ endfunction
 " Go to iTerm2 > Profiles > Text and select 'Use built-in Powerline glyphs'
 " Enable powerline font symbols for vim-airline. https://github.com/vim-airline/vim-airline#integrating-with-powerline-fonts
 let g:airline_powerline_fonts = 1
+
+" set coc color scheme to something more ideal than the default pink:
+" https://vi.stackexchange.com/questions/23328/change-color-of-coc-suggestion-box
+" CocFloating links to Pmenu. For details, run vim command `:hi`
+hi Pmenu ctermbg=7
 
 " Universal Ctags
 " To use on mac osx, first 'brew install --HEAD universal-ctags/universal-ctags/universal-ctags'
