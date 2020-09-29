@@ -55,8 +55,6 @@ Plug 'mattn/emmet-vim'
 Plug 'mileszs/ack.vim'
 Plug 'nelstrom/vim-textobj-rubyblock'
 " Installs from release branch (recommended)
-" For now, I still have to manually install the rust-analyzer extension
-" with vim command `:CocInstall coc-rust-analyzer`
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
