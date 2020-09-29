@@ -536,8 +536,8 @@ endfunction
 let g:airline_powerline_fonts = 1
 
 """ coc.nvim
-" install coc.nvim extensions
-let g:coc_global_extensions = ['coc-rust-analyzer']
+" install coc.nvim extensions (broken due to paypal cert issues)
+" let g:coc_global_extensions = ['coc-rust-analyzer']
 " disable completion suggestions in markdown
 autocmd FileType markdown let b:coc_suggest_disable = 1
 " set coc color scheme to something more ideal than the default pink:
