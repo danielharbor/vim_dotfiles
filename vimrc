@@ -104,13 +104,8 @@ let g:wstrip_highlight = 0
 " languages
 autocmd FileType ruby,java,python,c,cpp,sql,puppet,rust let b:wstrip_auto = 1
 
-if version >= 700
-    autocmd BufNewFile,BufRead *.txt setlocal spell spelllang=en_us
-    autocmd FileType tex setlocal spell spelllang=en_us
-endif
-
-" Run terraform fmt on terraform files
-autocmd BufWritePre *.tf call terraform#fmt()
+autocmd BufNewFile,BufRead *.txt setlocal spell spelllang=en_us
+autocmd FileType tex,gitcommit setlocal spell spelllang=en_us
 
 " Status
 set laststatus=2
@@ -264,7 +259,6 @@ if executable('java-language-server')
     \ 'cmd': {server_info->['java-language-server', '--quiet']},
     \ 'whitelist': ['java'],
     \ })
-  autocmd FileType java nmap <buffer> <C-e> <plug>(lsp-document-diagnostics)
   autocmd FileType java nmap <buffer> <C-i> <plug>(lsp-hover)
   autocmd FileType java nmap <buffer> <C-]> <plug>(lsp-definition)
   autocmd FileType java nmap <buffer> gr <plug>(lsp-references)
@@ -475,7 +469,12 @@ command! W w
 " https://vim.fandom.com/wiki/Reverse_order_of_lines
 command! -bar -range=% ReverseLines <line1>,<line2>g/^/m<line1>-1|nohl
 
-" Autoformat for bazel files
+" Initialize glaive if it's installed.
+if exists('*glaive#Install')
+  call glaive#Install()
+endif
+
+" Autoformat settings
 augroup autoformat_settings
   autocmd FileType bzl AutoFormatBuffer buildifier
 augroup END
