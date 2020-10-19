@@ -477,9 +477,10 @@ endif
 " Autoformat settings
 augroup autoformat_settings
   autocmd FileType bzl AutoFormatBuffer buildifier
+  autocmd FileType rust AutoFormatBuffer rustfmt
 augroup END
 
-inoremap jk <Esc>:w<CR>
+inoremap <silent> jk <Esc>:w<CR>
 " vnoremap jk <Esc>
 nnoremap <silent> ,<space> :noh<CR>
 nnoremap <C-J> <C-W><C-J>
