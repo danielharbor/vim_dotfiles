@@ -536,7 +536,7 @@ endfunction
 let g:airline_powerline_fonts = 1
 
 """ coc.nvim
-" install coc.nvim extensions (broken due to paypal cert issues)
+" install coc.nvim extensions (broken on local machine due to paypal cert issues)
 " let g:coc_global_extensions = ['coc-rust-analyzer']
 " disable completion suggestions in markdown
 autocmd FileType markdown let b:coc_suggest_disable = 1
