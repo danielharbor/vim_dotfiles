@@ -477,12 +477,14 @@ endif
 " Autoformat settings
 augroup autoformat_settings
   autocmd FileType bzl AutoFormatBuffer buildifier
-  autocmd FileType rust AutoFormatBuffer rustfmt
+  " commented out because rust format on save gets on my nerves
+  " autocmd FileType rust AutoFormatBuffer rustfmt
 augroup END
 
 inoremap <silent> jk <Esc>:w<CR>
 " vnoremap jk <Esc>
 nnoremap <silent> ,<space> :noh<CR>
+nnoremap <silent> ,f :FormatCode<CR>
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
@@ -507,7 +509,7 @@ augroup END
 nnoremap <leader>bb :TagbarToggle<cr>
 
 " open new tab
-nnoremap <silent> wincmd t :tabnew<cr>
+nnoremap <silent> <C-w>t :tabnew<cr>
 
 " open file under cursor in a new vertical split
 nnoremap <silent> gf :vertical wincmd f<CR>
@@ -544,6 +546,11 @@ autocmd FileType markdown let b:coc_suggest_disable = 1
 " https://vi.stackexchange.com/questions/23328/change-color-of-coc-suggestion-box
 " CocFloating links to Pmenu. For details, run vim command `:hi`
 hi Pmenu ctermbg=7
+
+" Use `[g` and `]g` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 " Universal Ctags
 " To use on mac osx, first 'brew install --HEAD universal-ctags/universal-ctags/universal-ctags'
